@@ -1,0 +1,61 @@
+create database ATIVIDADE3;
+use ATIVIDADE3;
+
+create table MEDICO(
+idmedico int primary key auto_increment,
+especialidade varchar(30)not null,
+nome varchar(30)not null
+);
+INSERT INTO MEDICO VALUES
+(NULL,"CARDIOLOGIA","JOSÉ");
+INSERT INTO MEDICO VALUES
+(NULL,"PEDIATRIA","DIANA");
+INSERT INTO MEDICO VALUES
+(NULL,"OFTAMOLOGIA","SAMIRA");
+INSERT INTO MEDICO VALUES
+(NULL,"PSIQUIATRIA","EDMUNDO");
+INSERT INTO MEDICO VALUES
+(NULL,"ANESTESIOLOGIA","ADRIANA")
+):
+create table PACIENTE(
+idpaciente int primary key auto_increment,
+nome varchar(30)
+);
+INSERT INTO PACIENTE VALUES
+(NULL,"EDSON");
+INSERT INTO PACIENTE VALUES
+(NULL,"KAIQUE");
+INSERT INTO PACIENTE VALUES
+(NULL,"ALEX");
+INSERT INTO PACIENTE VALUES
+(NULL,"AMANDA");
+INSERT INTO PACIENTE VALUES
+(NULL,"GAEL")
+);
+create table HOSPITAL(
+idhospital int primary key auto_increment,
+nome varchar(30)
+);
+INSERT INTO HOSPITAL VALUES
+(NULL,"SOUZA AGUIAR");
+INSERT INTO HOSPITAL VALUES
+(NULL,"QUALI IPANEMA")
+);
+create table CURSOS(
+idcurso int primary key auto_increment,
+preco float(10,2)not null,
+idprereq int,
+carga varchar(30)not null,
+nome varchar(30)not null
+);
+create table CONSULTA(
+idconsulta int primary key auto_increment,
+diagnostico varchar(30)not null,
+data datetime,
+id_paciente int not null,
+id_paciente foreign key(id_paciente)references PACIENTE(idpaciente),
+id_medico int not null,
+id_medico foreign key(id_medico)references MEDICO(idmedico)
+id_hospital int not null,
+id_hospital foreign key(id_hospital)references HOSPITAL(idhospital),
+);
